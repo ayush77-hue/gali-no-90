@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gali No. 90 — Tapri Radio</title>
+<meta name="description" content="Gali No. 90 — Mohalle ki sabse purani tapri. 90s Bollywood nostalgia, chai, paan and neighbourhood memories.">
+<meta name="theme-color" content="#17100b">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Libre+Baskerville:wght@400;700&display=swap');
+
+:root{
+  --cream:#f1d79b;--gold:#d9a94a;--red:#7d2118;--dark:#120c08;
+  --glass:rgba(14,10,7,.88);--line:rgba(241,215,155,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:#100a07;color:#f4dfb1;
+  font-family:"DM Mono",monospace;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+
+.page{
+  min-height:100vh;
+  background:
+    linear-gradient(180deg,rgba(10,6,4,.10),rgba(10,6,4,.92)),
+    url("gali-no-90-bg.png") center top/cover fixed no-repeat;
+  position:relative;
+  overflow:hidden;
+}
+.page:after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 50% 25%,transparent 0 28%,rgba(0,0,0,.5) 100%);
+}
+
+.topbar{
+  position:relative;z-index:3;display:flex;align-items:center;
+  justify-content:space-between;gap:18px;padding:18px 28px;
+}
+.station{
+  display:flex;align-items:center;gap:12px;
+  background:rgba(12,8,5,.82);border:1px solid var(--line);
+  padding:10px 15px;border-radius:12px;backdrop-filter:blur(8px);
+}
+.station-icon{font-size:25px}.station b{display:block;font-family:"Libre Baskerville";font-size:16px}
+.station span{font-size:10px;opacity:.7;letter-spacing:2px}
+
+.services{display:flex;gap:10px;align-items:center}
+.service{
+  display:flex;align-items:center;gap:8px;padding:10px 15px;
+  border:1px solid var(--line);border-radius:999px;background:#0d0b09;
+  transition:.2s;
+}
+.service:hover{transform:translateY(-2px);border-color:var(--gold)}
+.spotify-dot{color:#1ed760;font-size:18px}.yt-dot{color:#ff3333;font-size:18px}
+
+.bhaiya{
+  position:fixed;right:22px;top:86px;z-index:10;
+  display:flex;align-items:center;gap:11px;
+  padding:9px 14px 9px 9px;border:1px solid var(--gold);
+  background:rgba(17,11,7,.94);border-radius:40px;
+  box-shadow:0 10px 35px rgba(0,0,0,.4);cursor:pointer;
+}
+.avatar{
+  width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
+  background:#2b1b10;border:2px solid var(--gold);font-size:24px;
+}
+.bhaiya small{display:block;color:#b9a57d}.bhaiya strong{display:block;color:var(--gold)}
+.green-dot{display:inline-block;width:8px;height:8px;background:#2bd56b;border-radius:50%;margin-left:4px}
+
+.hero{
+  position:relative;z-index:2;min-height:690px;
+  display:flex;align-items:center;justify-content:center;padding:35px 18px 80px;
+}
+.hero-title{text-align:center;margin-top:-110px}
+.kicker{letter-spacing:7px;font-size:12px;color:#e9ca82}
+h1{
+  margin:8px 0 0;font-family:"Libre Baskerville",serif;
+  font-size:clamp(70px,13vw,180px);line-height:.85;color:#8d2418;
+  text-shadow:0 3px 0 #e8c981,0 8px 22px #000;
+}
+.subtitle{font-family:"Libre Baskerville";font-size:clamp(16px,2vw,28px);color:#17100b;background:#e6c987;display:inline-block;padding:7px 18px;margin-top:14px;transform:rotate(-1deg)}
+
+.player{
+  position:absolute;left:50%;bottom:35px;transform:translateX(-50%);
+  width:min(760px,calc(100% - 30px));background:var(--glass);
+  border:1px solid var(--gold);border-radius:18px;padding:22px;
+  box-shadow:0 18px 60px #000b;backdrop-filter:blur(10px);
+}
+.player-top{display:flex;gap:18px;align-items:center}
+.cassette{
+  flex:0 0 125px;height:125px;border:1px solid #b99556;border-radius:12px;
+  background:linear-gradient(#d7c18f,#6d583b);display:grid;place-items:center;
+  color:#1a110b;font-family:"Libre Baskerville";font-weight:bold;text-align:center;
+}
+.track{flex:1}.track h2{margin:0;font-family:"Libre Baskerville";font-size:25px}
+.track p{margin:7px 0;color:#bcae8d;font-size:12px}
+.onair{float:right;color:#f04b2e;font-size:11px}
+.progress{height:5px;background:#4d3a28;border-radius:5px;margin:14px 0}
+.progress span{display:block;width:37%;height:100%;background:#c34225;border-radius:5px}
+.controls{display:flex;align-items:center;justify-content:center;gap:18px}
+.control{border:0;background:transparent;color:#f4dfb1;cursor:pointer;font-size:20px}
+.play{width:54px;height:54px;border-radius:50%;background:#f4dfb1;color:#17100b;font-size:20px}
+.player-actions{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:11px;color:#a99778}
+
+.content{
+  position:relative;z-index:2;background:#160e09;
+  border-top:2px solid #8b632c;padding:70px 6%;
+}
+.grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{
+  border:1px solid var(--line);background:#21150d;padding:25px;
+  box-shadow:0 8px 30px #0007;
+}
+.card h3{margin:0 0 15px;color:var(--gold);font-family:"Libre Baskerville"}
+.card p{color:#c9b894;line-height:1.7;font-size:13px}
+.open-spotify{
+  display:inline-flex;align-items:center;gap:10px;margin-top:12px;
+  background:#1ed760;color:#071107;padding:12px 17px;border-radius:8px;font-weight:bold;
+}
+.note{border-left:3px solid var(--gold);padding-left:15px}
+
+footer{
+  position:relative;z-index:2;background:#0c0805;border-top:1px solid #3b2819;
+  padding:25px 6%;display:flex;justify-content:space-between;gap:20px;
+  color:#9f8a67;font-size:11px;
+}
+
+@media(max-width:800px){
+  .topbar{padding:12px 14px}.station span{display:none}
+  .services{gap:6px}.service{padding:8px 10px;font-size:11px}
+  .hero{min-height:720px}.hero-title{margin-top:-150px}
+  h1{font-size:clamp(58px,18vw,100px)}
+  .player{bottom:25px;padding:15px}.cassette{flex-basis:88px;height:88px}
+  .track h2{font-size:18px}.track p{font-size:10px}
+  .grid{grid-template-columns:1fr}.content{padding:50px 18px}
+  .bhaiya{top:auto;bottom:18px;right:15px}.bhaiya .copy{display:none}
+  footer{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="topbar">
+    <div class="station">
+      <div class="station-icon">📻</div>
+      <div><b>TAPRI RADIO</b><span>90s BOLLYWOOD HITS</span></div>
+    </div>
+    <nav class="services" aria-label="Music links">
+      <a class="service" href="https://open.spotify.com/playlist/5RIbCY5V9SCeka7SkE2z8V" target="_blank" rel="noopener">
+        <span class="spotify-dot">●</span> Spotify
+      </a>
+      <a class="service" href="https://music.youtube.com/" target="_blank" rel="noopener">
+        <span class="yt-dot">▶</span> YouTube Music
+      </a>
+    </nav>
+  </header>
+
+  <button class="bhaiya" id="bhaiyaBtn" aria-label="Who's at the tapri?">
+    <div class="avatar">👨🏽‍🍳</div>
+    <div class="copy">
+      <small>Who's at the tapri?</small>
+      <strong>Paan Wale Bhaiya <span class="green-dot"></span></strong>
+      <small>Tapri sambhal rahe hain!</small>
+    </div>
+  </button>
+
+  <main>
+    <section class="hero">
+      <div class="hero-title">
+        <div class="kicker">MOHALLE KI YAADON KA RADIO</div>
+        <h1>गली नं. 90</h1>
+        <div class="subtitle">गली नं. 90 — स्थापित १९९०</div>
+      </div>
+
+      <div class="player">
+        <div class="player-top">
+          <div class="cassette">90s<br>BOLLYWOOD<br><small>HITS</small></div>
+          <div class="track">
+            <span class="onair">● ON AIR</span>
+            <h2>GALI NO. 90 RADIO</h2>
+            <p>90s Bollywood Hits • Mohalle Ki Yaadein</p>
+            <p><b>Spotify playlist</b> • Ayush</p>
+            <div class="progress"><span></span></div>
+          </div>
+        </div>
+        <div class="controls">
+          <button class="control">↶</button><button class="control">◀</button>
+          <button class="play" onclick="openSpotify()">▶</button>
+          <button class="control">▶</button><button class="control">↷</button>
+        </div>
+        <div class="player-actions">
+          <span>🎵 Music plays through Spotify</span>
+          <a href="https://open.spotify.com/playlist/5RIbCY5V9SCeka7SkE2z8V" target="_blank" rel="noopener">OPEN PLAYLIST →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="grid">
+        <article class="card">
+          <h3>☕ Aaj ka mood</h3>
+          <p>Thandi chai, kadak paan, thodi si baatein aur woh 90s ke gaane jo bina bulaye purani yaadein le aate hain.</p>
+          <a class="open-spotify" href="https://open.spotify.com/playlist/5RIbCY5V9SCeka7SkE2z8V" target="_blank" rel="noopener">● OPEN ON SPOTIFY</a>
+        </article>
+        <article class="card">
+          <h3>🪧 Tapri ka niyam</h3>
+          <p class="note">Yahan koi jaldi nahi karta. Chai pehle, gaana baad mein. Mohalle ki baat confidential hai.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 GALI NO. 90 • Mohalle ki sabse purani tapri</span>
+    <span>Built with ❤️ by Ayush</span>
+    <span>Play loud. Feel proud. 📼</span>
+  </footer>
+</div>
+
+<script>
+const spotify = "https://open.spotify.com/playlist/5RIbCY5V9SCeka7SkE2z8V";
+function openSpotify(){ window.open(spotify, "_blank", "noopener"); }
+document.getElementById("bhaiyaBtn").addEventListener("click",()=>{
+  window.open("https://instagram.com/sarcastic.ayush11","_blank","noopener");
+});
+</script>
+</body>
+</html>
