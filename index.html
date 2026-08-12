@@ -89,6 +89,14 @@ h1{
   border:1px solid var(--gold);border-radius:18px;padding:22px;
   box-shadow:0 18px 60px #000b;backdrop-filter:blur(10px);
 }
+
+.spotify-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-bottom:15px}
+.spotify-heading h2{margin:0;font-family:"Libre Baskerville";font-size:25px}
+.spotify-heading p{margin:7px 0;color:#bcae8d;font-size:12px}
+.spotify-badge{color:#1ed760;font-size:11px;letter-spacing:1px;white-space:nowrap}
+.spotify-embed{border-radius:12px;overflow:hidden;background:#000}
+.spotify-embed iframe{display:block;border:0}
+
 .player-top{display:flex;gap:18px;align-items:center}
 .cassette{
   flex:0 0 125px;height:125px;border:1px solid #b99556;border-radius:12px;
@@ -176,24 +184,31 @@ footer{
       </div>
 
       <div class="player">
-        <div class="player-top">
-          <div class="cassette">90s<br>BOLLYWOOD<br><small>HITS</small></div>
-          <div class="track">
+        <div class="spotify-heading">
+          <div>
             <span class="onair">● ON AIR</span>
             <h2>GALI NO. 90 RADIO</h2>
             <p>90s Bollywood Hits • Mohalle Ki Yaadein</p>
-            <p><b>Spotify playlist</b> • Ayush</p>
-            <div class="progress"><span></span></div>
           </div>
+          <span class="spotify-badge">● SPOTIFY</span>
         </div>
-        <div class="controls">
-          <button class="control">↶</button><button class="control">◀</button>
-          <button class="play" onclick="openSpotify()">▶</button>
-          <button class="control">▶</button><button class="control">↷</button>
+
+        <div class="spotify-embed">
+          <iframe
+            src="https://open.spotify.com/embed/playlist/5RIbCY5V9SCeka7SkE2z8V?utm_source=generator&theme=0"
+            width="100%"
+            height="352"
+            frameborder="0"
+            allowfullscreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            title="Gali No. 90 Spotify playlist">
+          </iframe>
         </div>
+
         <div class="player-actions">
-          <span>🎵 Music plays through Spotify</span>
-          <a href="https://open.spotify.com/playlist/5RIbCY5V9SCeka7SkE2z8V" target="_blank" rel="noopener">OPEN PLAYLIST →</a>
+          <span>🎵 Music plays here through Spotify</span>
+          <a href="https://open.spotify.com/playlist/5RIbCY5V9SCeka7SkE2z8V" target="_blank" rel="noopener">OPEN FULL PLAYLIST →</a>
         </div>
       </div>
     </section>
@@ -222,7 +237,6 @@ footer{
 
 <script>
 const spotify = "https://open.spotify.com/playlist/5RIbCY5V9SCeka7SkE2z8V";
-function openSpotify(){ window.open(spotify, "_blank", "noopener"); }
 document.getElementById("bhaiyaBtn").addEventListener("click",()=>{
   window.open("https://instagram.com/sarcastic.ayush11","_blank","noopener");
 });
